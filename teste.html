@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo-instadelivery.jpeg" type="image/x-icon">
+    <meta name="description" content="plataforma de cardapio digital com sistema pdv sem taxa por pedido.">
+    <meta name="theme-color" content="#0a0a0a">
+    <title>instadelivery</title>
+    <style>
+        /* CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #eeeeee;
+            min-height: 100vh;
+            
+            
+        }
+
+        /* HEADER */
+        header {
+            background-color: #161616;
+            height: 60px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #2a2a2a;
+            z-index: 1001;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #0088ff;
+        }
+
+        /* LAYOUT PRINCIPAL */
+        .wrapper {
+            display: flex;
+            flex: 1;
+            
+        }
+
+        /* SIDEBAR (COMEÇA FECHADA) */
+        aside {
+            width: 300px;
+            background-color: #161616;
+            border-right: 1px solid #2a2a2a;
+            transition: margin 0.3s ease;
+            overflow-y: auto;
+        }
+
+        aside.closed {
+            margin-left: -300px;
+        }
+
+        .sidebar-item {
+            padding: 15px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #222;
+        }
+
+        .sidebar-item.active {
+            background-color: #1e1e1e;
+            color: #0088ff;
+            border-left: 3px solid #0088ff;
+        }
+
+        /* ÁREA DO VÍDEO SEM ALTURA FIXA */
+        main {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            /* Removido o padding-bottom que travava a altura */
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: auto; /* A altura será proporcional ao arquivo de vídeo real */
+            display: block;
+        }
+
+        .content-info {
+            width: 100%;
+            max-width: 1000px;
+            margin-top: 20px;
+        }
+
+        .btn-row {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-next { background: #0088ff; color: #000; }
+
+        @media (max-width: 768px) {
+            aside { position: absolute; height: 100%; z-index: 10; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="home">
+        <div class="header-left">
+            <button class="menu-btn" onclick="toggleMenu()">☰</button>
+            <div onclick="toggleMenu()" class="logo">instade<span style="color: white;">livery</span> <span style="margin-left: 10px; font-size: 10px; color: white;">tutorial</span></div>
+        </div>
+    </header>
+
+    <div class="wrapper">
+        <aside id="sidebar" class="closed">  
+            <div class="sidebar-item active"><a style="color: white; text-decoration: none;" target="_blank" href="https://instadelivery.com.br/gratuito?r=3433393939">criar cardapio</a></div>
+            <div class="sidebar-item"><a style="color: white; text-decoration: none;" href="#home">01.como funciona</a></div>
+            <div class="sidebar-item"><a style="color: white; text-decoration: none;" href="#video3">02.formas de pagamento</a></div>
+            <div class="sidebar-item"><a style="color: white; text-decoration: none;" href="#video1">03.configurações gerais</a></div>
+            <div class="sidebar-item"><a style="color: white; text-decoration: none;" href="#video4">04.logo e design</a></div>
+            <div class="sidebar-item"><a style="color: white; text-decoration: none;" href="#video5">05.configuração cardapio</a></div>
+            <div class="sidebar-item"><a style="color: white; text-decoration: none;" href="#video6">06.lista</a></div>
+            <div class="sidebar-item"><a style="color: white; text-decoration: none;" href="https://wa.me/5584981617972">contato</a></div>
+        
+        </aside>
+
+
+
+<div style=" width: 100%; height: 90px;display: flex; flex-direction: column; align-items: center; ">
+
+    <div id="comofunciona" style="width: 100%; max-width: 1000px; " class="container-video">
+        <video  controls src="video/como funciona o instadelivery.mp4"></video>
+    </div>
+
+    <div  style="width: 100%; max-width: 1000px;">
+        <h1 style="font-size: 20px; margin: 10px;">como funciona o instadelivery</h1>
+        <p style="margin: 10px; font-size:15px;">aprenda nos proximos videos como configurar o instadelivery em 6 passos</p>
+        <div style="display: flex; justify-content: right;">
+           <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video1">proximo</a>
+            
+        </div>
+    </div>
+
+<br><br>
+
+    
+    <div id="video1"  style="width: 100%; max-width: 1000px; " class="container-video">
+        <video controls src="video/como funciona o instadelivery.mp4"></video>
+    </div>
+
+    <div style="width: 100%; max-width: 1000px;">
+         <h1 style="font-size: 20px; margin: 10px;">[1º] configurações gerais</h1>
+        <p style="margin: 10px; font-size:15px;">Clique em configurações no seu painel , e em seguida em configurações gerais para cadastrar Nome do Negócio , email,telefone,horário de funcionamento e cpf.</p>
+        <div  id="videoum" style="display: flex; justify-content: space-between;">
+            <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#comofunciona">anterior</a>
+            <a  style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video2">proximo</a>
+            
+        </div>
+    </div>
+
+
+    <br><br>
+
+   <div id="video2" style="width: 100%; max-width: 1000px; " class="container-video">
+        <video controls src="video/como funciona o instadelivery.mp4"></video>
+    </div>
+
+    <div style="width: 100%; max-width: 1000px;">
+         <h1 style="font-size: 20px; margin: 10px;">[2º] horário de funcionamento</h1>
+        <p style="margin: 10px; font-size:15px;">informe nas Configurações de Horário</p>
+        <div style="display: flex; justify-content: space-between;">
+            <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video1">anterior</a>
+            <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video3">proximo</a>
+            
+        </div>
+    </div>
+
+<br><br>
+
+  <br><br>
+
+   <div id="video3" style="width: 100%; max-width: 1000px; " class="container-video">
+        <video controls src="video/como funciona o instadelivery.mp4"></video>
+    </div>
+
+    <div style="width: 100%; max-width: 1000px;">
+         <h1 style="font-size: 20px; margin: 10px;">[3º] formas de pagamento</h1>
+        <p style="margin: 10px; font-size:15px;">Informe quais métodos de pagamento aceita nas Formas de Pagamento</p>
+        <div style="display: flex; justify-content: space-between;">
+            <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video2">anterior</a>
+            <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video4">proximo</a>
+            
+        </div>
+    </div>
+
+<br><br>
+
+
+  <br><br>
+
+   <div id="video4" style="width: 100%; max-width: 1000px; " class="container-video">
+        <video controls src="video/como funciona o instadelivery.mp4"></video>
+    </div>
+
+    <div style="width: 100%; max-width: 1000px;">
+         <h1 style="font-size: 20px; margin: 10px;">[4º] logo e design</h1>
+        <p style="margin: 10px; font-size:15px;">Faça o upload (opcional) do seu logo nas Configurações de Design</p>
+        <div style="display: flex; justify-content: space-between;">
+            <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video3">anterior</a>
+            <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video5">proximo</a>
+            
+        </div>
+    </div>
+
+<br><br>
+
+
+  <br><br>
+
+   <div id="video5" style="width: 100%; max-width: 1000px; " class="container-video">
+        <video controls src="video/como funciona o instadelivery.mp4"></video>
+    </div>
+
+    <div style="width: 100%; max-width: 1000px;">
+         <h1 style="font-size: 20px; margin: 10px;">[5º] configuração do cardapio</h1>
+        <p style="margin: 10px; font-size:15px;">Para começar a configurar seu cardápio, crie seu primeiro grupo (ex.: "Bebidas") de itens na página Meu Cardápio -> Grupos</p>
+        <div style="display: flex; justify-content: space-between;">
+            <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video4">anterior</a>
+            <a style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video6">proximo</a>
+            
+        </div>
+    </div>
+
+<br><br>
+
+
+  <br><br>
+
+   <div id="video6" style="width: 100%; max-width: 1000px; " class="container-video">
+        <video controls src="video/como funciona o instadelivery.mp4"></video>
+    </div>
+
+    <div style="width: 100%; max-width: 1000px;">
+         <h1 style="font-size: 20px; margin: 10px;">[6º] lista</h1>
+        <p style="margin: 10px; font-size:15px;">OPCIONAL Após criar o item, crie uma lista de complementos (ex: "Com limão / Sem limão") para seu item clicando no botão "+ Complementos" a direita do item desejado, na tela de edição de cardápio</p>
+        <div style="display: flex; justify-content: space-between;">
+            <a id="video5" style="margin: 10px; text-decoration: none; padding: 10px;border-radius: 2px;color: black; background-color: white;" href="#video5">anterior</a>
+           
+        </div>
+    </div>
+
+<br><br>
+
+
+  <br><br>
+
+
+
+  
+
+
+    <footer class="site-footer">
+    <div class="footer-content">
+        <div class="footer-section about">
+            <h2 class="logo-footer">insta<span>delivery</span></h2>
+            <p>plataforma de cardapio digital.</p>
+        </div>
+
+        <div class="footer-section links">
+            <h3>Navegação</h3>
+            <ul>
+                <li><a href="#comofunciona">como funciona</a></li>
+                <li><a href="#video1">configurações gerais</a></li>
+                <li><a href="#video2">como configurar horarario</a></li>
+                <li><a href="#video3">formas de pagamento</a></li>
+                <li><a href="#video4">logo e design</a></li>
+                <li><a href="#video5">configuração do cardapio</a></li>
+                <li><a href="#video6">lista</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section social">
+            
+            <div class="social-icons">
+                <a href="#home">home</a>
+                <a target="_blank" href="https://wa.me/5584981617972">contato</a>
+                <a target="_blank" href="https://instadelivery.com.br/gratuito?r=3433393939">criar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        &copy; instadelivery | Todos os direitos reservados.
+    </div>
+</footer>
+
+<style>
+    /* ESTILOS DO FOOTER */
+    .site-footer {
+        background-color: transparent;
+        color: #888;
+        padding: 40px 20px 20px;
+        margin-top: auto; /* Garante que o footer fique no fim se houver pouco conteúdo */
+    }
+
+    .footer-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        flex-wrap: wrap; /* Permite quebrar linha no mobile */
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .footer-section {
+        flex: 1;
+        min-width: 250px; /* Largura mínima para cada coluna */
+    }
+
+    .footer-section h3 {
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+    }
+
+    .logo-footer {
+        color: #0088ff;
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+
+    .logo-footer span {
+        color:white;
+    }
+
+    .footer-section p {
+        line-height: 1.6;
+        font-size: 0.9rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 10px;
+    }
+
+    .footer-section ul li a {
+        color: #888;
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 0.9rem;
+    }
+
+    .footer-section ul li a:hover {
+        color: #00d4ff;
+        padding-left: 5px;
+    }
+
+    .social-icons a {
+        display: inline-block;
+        margin-right: 15px;
+        color: #888;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 0.9rem;
+        transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+        color: #00d4ff;
+    }
+
+    /* Barra Inferior */
+    .footer-bottom {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid #2a2a2a;
+        font-size: 0.8rem;
+    }
+
+    /* Ajuste para telas pequenas */
+    @media (max-width: 768px) {
+        .footer-content {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .footer-section ul li a:hover {
+            padding-left: 0;
+        }
+    }
+</style>
+
+
+</div>
+
+
+
+
+
+
+
+        
+    <script>
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('closed');
+        }
+
+        // Seleção de itens do menu
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', () => {
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                if (window.innerWidth <= 768) toggleMenu();
+            });
+        });
+    </script>
+</body>
+</html>
